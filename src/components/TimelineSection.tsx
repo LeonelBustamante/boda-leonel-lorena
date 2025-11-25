@@ -1,5 +1,4 @@
 import { Typography, Timeline, ConfigProvider } from "antd";
-import { ClockCircleOutlined } from "@ant-design/icons";
 
 export default function TimelineSection() {
     return (

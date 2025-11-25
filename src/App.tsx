@@ -57,7 +57,7 @@ function App() {
                 : i % 3 === 1
                   ? "var(--accent-rose)"
                   : "#ff69b4"
-            }}
+            } as any}
           />
         ))}
       </div>
