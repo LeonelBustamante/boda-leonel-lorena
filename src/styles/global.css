@@ -1,0 +1,147 @@
+:root {
+  /* Paleta suave para acentos (inspiración bosque + romance) */
+  --accent-rose: #f6d6e6;
+  /* guiño al rosa que le gusta a Lorena */
+  --accent-leaf: #dfeee3;
+  --accent-ink: #111;
+  /* negro para vos */
+  --accent-red: #c44747;
+  /* rojo para detalles */
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(1000px 500px at 10% 10%, var(--accent-leaf) 0%, transparent 60%),
+    radial-gradient(1000px 500px at 90% 10%, var(--accent-rose) 0%, transparent 60%),
+    linear-gradient(180deg, #fff 0%, #fdf9fa 100%);
+  background-attachment: fixed;
+  font-family: "Rouge Script", cursive;
+}
+
+.rouge-script-regular {
+  font-family: "Rouge Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.section-cards {
+  background-color: #fff;
+  background-image: radial-gradient(circle at 10% 10%, #fbe4ec 0%, transparent 25%),
+    radial-gradient(circle at 90% 80%, #e4f4ea 0%, transparent 30%);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.h1-romantic {
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 0.5px;
+  color: #ffffff
+}
+
+.section {
+  padding: 64px 16px;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.map-responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+}
+
+.map-responsive iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* sutil detalle amoroso en hover de las cards */
+.card-hover:hover {
+  transform: translateY(-2px);
+  transition: transform .2s ease;
+}
+
+/* Corazones flotando - CORREGIDO */
+.hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  width: var(--heart-size, 20px);
+  height: var(--heart-size, 20px);
+  background: var(--accent-rose);
+  opacity: 0;
+  animation: float 12s infinite ease-in-out;
+  will-change: transform, opacity;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  /* Rotación solo en los pseudo-elementos */
+}
+
+.heart::before {
+  top: -50%;
+  left: 0;
+}
+
+.heart::after {
+  left: 50%;
+  top: 0;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0) rotate(-45deg);
+    /* Contrarresta la forma del corazón */
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: translateY(-55vh) translateX(var(--sway, 0px)) rotate(calc(-45deg + var(--rotation, 0deg)));
+    opacity: 0.6;
+  }
+
+  90% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(-110vh) translateX(calc(var(--sway, 0px) * 1.5)) rotate(calc(-45deg + var(--rotation, 0deg)));
+    opacity: 0;
+  }
+}
